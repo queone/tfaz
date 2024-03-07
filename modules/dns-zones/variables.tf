@@ -1,5 +1,3 @@
-# variables.tf
-
 variable "dns_zones" {
   description = "A list of DNS zones and their records"
   type = list(object({
