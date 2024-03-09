@@ -10,7 +10,7 @@ locals {
 
 resource "azurerm_resource_group" "rg" {
   count    = length(local.res_groups_updated)
-  name     = "${local.res_groups_updated[count.index].name_prefix}-rg-${local.res_groups_updated[count.index].name}"
+  name     = "${local.res_groups_updated[count.index].name_prefix}-${local.res_groups_updated[count.index].name}"
   location = local.res_groups_updated[count.index].location
   tags     = local.res_groups_updated[count.index].tags
 }
