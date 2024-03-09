@@ -1,5 +1,5 @@
 # Each zone
-resource "azurerm_dns_zone" "this" {
+resource "azurerm_dns_zone" "zone" {
   for_each            = { for zone in var.dns_zones : zone.dns_zone_name => zone }
   name                = each.value.dns_zone_name
   resource_group_name = each.value.resource_group_name
@@ -28,7 +28,7 @@ locals {
     ]
   ])
 }
-resource "azurerm_dns_a_record" "this" {
+resource "azurerm_dns_a_record" "a" {
   for_each            = { for record in local.a_records : "${record.zone_name}-${record.name}" => record }
   name                = each.value.name
   zone_name           = each.value.zone_name
@@ -51,7 +51,7 @@ locals {
     ]
   ])
 }
-resource "azurerm_dns_cname_record" "this" {
+resource "azurerm_dns_cname_record" "cname" {
   for_each            = { for record in local.cname_records : "${record.zone_name}-${record.name}" => record }
   name                = each.value.name
   zone_name           = each.value.zone_name
@@ -74,7 +74,7 @@ locals {
     ]
   ])
 }
-resource "azurerm_dns_mx_record" "this" {
+resource "azurerm_dns_mx_record" "mx" {
   for_each            = { for record in local.mx_records : "${record.zone_name}-${record.name}" => record }
   name                = each.value.name
   zone_name           = each.value.zone_name
@@ -103,7 +103,7 @@ locals {
     ]
   ])
 }
-resource "azurerm_dns_txt_record" "this" {
+resource "azurerm_dns_txt_record" "txt" {
   for_each            = { for record in local.txt_records : "${record.zone_name}-${record.name}" => record }
   name                = each.value.name
   zone_name           = each.value.zone_name
@@ -136,7 +136,7 @@ locals {
     ]
   ])
 }
-resource "azurerm_dns_srv_record" "this" {
+resource "azurerm_dns_srv_record" "srv" {
   for_each            = { for record in local.srv_records : "${record.zone_name}-${record.name}" => record }
   name                = each.value.name
   zone_name           = each.value.zone_name
@@ -164,7 +164,7 @@ locals {
     ]
   ])
 }
-resource "azurerm_dns_ptr_record" "this" {
+resource "azurerm_dns_ptr_record" "ptr" {
   for_each            = { for record in local.ptr_records : "${record.zone_name}-${record.name}" => record }
   name                = each.value.name
   zone_name           = each.value.zone_name
