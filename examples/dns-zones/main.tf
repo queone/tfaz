@@ -1,7 +1,6 @@
+
 module "azure_dns_zones" {
-  source    = "github.com/queone/tfaz//modules/dns-zones"
-  #version   = "0.1.0"
-  # Or below instead, if you want to develop against the local copy
-  #source    = "../../dns-zones"
+  source = "github.com/queone/tfaz//modules/dns-zones"
+  # source = "../../modules/dns-zones"  # Or this, to develop against the local copy
   dns_zones = var.dns_zones
 }
