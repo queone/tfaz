@@ -14,6 +14,6 @@ resource "azuread_application" "app" {
 resource "azuread_service_principal" "sp" {
   for_each = { for sp in local.dir_appids : sp.display_name => sp }
 
-  client_id = azuread_application.this[each.key].client_id
+  client_id = azuread_application.app[each.key].client_id
   owners    = each.value.owners
 }
